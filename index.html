@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Aditya – Backend & Automation Engineer</title>
+  <title>Aditya Dubey – Senior Backend & Automation Engineer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Portfolio of Aditya – Backend & Automation Engineer specializing in Node.js, PHP/Laravel, MongoDB, HR tools, resume parsing, and Chrome extensions."
+    content="Portfolio of Aditya Dubey – Senior Backend & Automation Engineer specializing in Node.js, PHP/Laravel, MongoDB, HR tech, resume parsing, browser automation and production troubleshooting."
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,7 +24,7 @@
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --border-subtle: rgba(148, 163, 184, 0.3);
-      --card-bg: rgba(15, 23, 42, 0.85);
+      --card-bg: rgba(15, 23, 42, 0.9);
       --radius-xl: 18px;
       --radius-2xl: 24px;
       --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
@@ -72,8 +72,8 @@
       backdrop-filter: var(--nav-blur);
       background: linear-gradient(
         to bottom,
-        rgba(2, 6, 23, 0.95),
-        rgba(2, 6, 23, 0.85),
+        rgba(2, 6, 23, 0.97),
+        rgba(2, 6, 23, 0.88),
         transparent
       );
       border-bottom: 1px solid rgba(30, 64, 175, 0.6);
@@ -96,8 +96,8 @@
     }
 
     .brand-logo {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.7);
       background: radial-gradient(circle at 30% 0%, #38bdf8, #1e3a8a);
@@ -143,7 +143,7 @@
     nav a:hover {
       color: var(--text-main);
       border-color: rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.9);
       transform: translateY(-1px);
     }
 
@@ -194,16 +194,16 @@
     .section-subtitle {
       font-size: 13px;
       color: var(--text-muted);
-      max-width: 560px;
+      max-width: 580px;
     }
 
     /* Hero */
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
       gap: 28px;
-      align-items: center;
+      align-items: stretch;
     }
 
     @media (max-width: 840px) {
@@ -221,6 +221,12 @@
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
+    }
+
+    .hero-top {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
     }
 
     .hero-pill {
@@ -276,7 +282,7 @@
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.6);
       color: var(--text-muted);
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .hero-actions {
@@ -304,7 +310,7 @@
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px);
+      transform: translateY(-1px) translateZ(0);
       box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
       background: radial-gradient(circle at top left, #38bdf8, #1d4ed8);
     }
@@ -314,7 +320,7 @@
       border-radius: 999px;
       font-size: 13px;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.95);
       color: var(--text-main);
       cursor: pointer;
       display: inline-flex;
@@ -353,9 +359,63 @@
       background: rgba(148, 163, 184, 0.9);
     }
 
+    /* Profile photo */
+
+    .hero-photo-wrap {
+      min-width: 120px;
+      max-width: 140px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-photo-inner {
+      position: relative;
+      padding: 3px;
+      border-radius: 999px;
+      background: conic-gradient(
+        from 180deg,
+        rgba(56, 189, 248, 0.2),
+        rgba(59, 130, 246, 0.7),
+        rgba(56, 189, 248, 0.2)
+      );
+      box-shadow: var(--shadow-glow);
+    }
+
+    .hero-photo-ring {
+      border-radius: 999px;
+      padding: 2px;
+      background: radial-gradient(circle at top, #020617, #020617);
+    }
+
+    .hero-photo {
+      display: block;
+      width: 115px;
+      height: 115px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+    }
+
+    .hero-photo-caption {
+      text-align: center;
+      margin-top: 6px;
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 600px) {
+      .hero-top {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+      .hero-photo-wrap {
+        justify-content: flex-start;
+      }
+    }
+
     .hero-right {
       border-radius: var(--radius-2xl);
-      border: 1px solid rgba(56, 189, 248, 0.4);
+      border: 1px solid rgba(56, 189, 248, 0.5);
       padding: 14px 14px 16px;
       background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent),
         linear-gradient(135deg, #020617, #020617 45%, #0b1220);
@@ -376,6 +436,27 @@
       gap: 8px;
     }
 
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 11px;
+    }
+
+    .hero-badge {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-muted);
+    }
+
+    .hero-badge-strong {
+      border-color: rgba(56, 189, 248, 0.8);
+      color: var(--accent);
+    }
+
     .hero-right-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -385,17 +466,26 @@
     .pill-card {
       border-radius: var(--radius-xl);
       padding: 10px;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.92);
       border: 1px solid var(--border-subtle);
       font-size: 11px;
       position: relative;
       overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background var(--transition-fast);
     }
 
     .pill-card strong {
       font-size: 12px;
       display: block;
       margin-bottom: 2px;
+    }
+
+    .pill-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+      box-shadow: var(--shadow-soft);
     }
 
     .pill-meta {
@@ -438,6 +528,29 @@
       font-size: 13px;
       position: relative;
       overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      opacity: 0;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent);
+      transition: opacity 0.25s ease-out;
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card:hover::before {
+      opacity: 1;
     }
 
     .card-title {
@@ -482,11 +595,20 @@
       padding: 14px 14px 16px;
       border-radius: var(--radius-2xl);
       background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent),
-        rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(56, 189, 248, 0.5);
+        rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(56, 189, 248, 0.6);
       box-shadow: var(--shadow-soft);
       font-size: 13px;
       overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .project:hover {
+      transform: translateY(-2px);
+      border-color: rgba(96, 165, 250, 0.9);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 1);
     }
 
     .project-header {
@@ -544,7 +666,7 @@
     .skills-layout {
       margin-top: 18px;
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 18px;
     }
 
@@ -615,7 +737,7 @@
 
     .timeline-item {
       display: grid;
-      grid-template-columns: 105px minmax(0, 1fr);
+      grid-template-columns: 110px minmax(0, 1fr);
       gap: 12px;
       padding: 8px 0;
       border-bottom: 1px dashed rgba(55, 65, 81, 0.6);
@@ -778,7 +900,6 @@
       text-align: center;
     }
 
-    /* Small helper for the fake form */
     .fake-disabled {
       opacity: 0.8;
       cursor: not-allowed;
@@ -791,8 +912,8 @@
       <div class="brand">
         <div class="brand-logo"></div>
         <div>
-          <div class="brand-text-main">Aditya</div>
-          <div class="brand-text-sub">Backend & Automation Engineer</div>
+          <div class="brand-text-main">Aditya Dubey</div>
+          <div class="brand-text-sub">Senior Backend & Automation Engineer</div>
         </div>
       </div>
       <nav>
@@ -809,24 +930,45 @@
       <!-- HERO -->
       <section id="top" class="hero">
         <div class="hero-left">
-          <div class="hero-pill">
-            <span class="hero-pill-dot"></span>
-            Available for remote / hybrid work
+          <div class="hero-top">
+            <div style="flex:1 1 auto;">
+              <div class="hero-pill">
+                <span class="hero-pill-dot"></span>
+                Available for backend-heavy & automation work
+              </div>
+              <h1 class="hero-title">
+                I design and maintain <span>reliable backends & hiring automations</span>.
+              </h1>
+              <p class="hero-tagline">
+                Senior backend engineer from India focused on real-world systems:
+                HR platforms, high-volume candidate reporting, resume parsing APIs,
+                Chrome extensions and production troubleshooting.
+              </p>
+            </div>
+
+            <!-- PROFILE PHOTO -->
+            <div class="hero-photo-wrap">
+              <div>
+                <div class="hero-photo-inner">
+                  <div class="hero-photo-ring">
+                    <!-- IMPORTANT: put a file named profile.jpg in this repo (same folder as index.html) -->
+                    <img src="https://avatars.githubusercontent.com/u/113830981?s=400&u=ebe2660a62d18827f859e8fa4f7acff33b6b1951&v=4" alt="Photo of Aditya Dubey" class="hero-photo" />
+                  </div>
+                </div>
+                <div class="hero-photo-caption">
+                  Aditya Dubey · India
+                </div>
+              </div>
+            </div>
           </div>
-          <h1 class="hero-title">
-            I build <span>backends, automations & hiring tools</span>.
-          </h1>
-          <p class="hero-tagline">
-            Backend-heavy engineer from India, focused on real-world systems –
-            HR platforms, resume parsing APIs, Chrome extensions, and automation scripts
-            that save teams hours every week.
-          </p>
 
           <div class="hero-stats">
-            <div class="chip">Node.js · PHP / Laravel · Python</div>
+            <div class="chip">Node.js · Express · REST</div>
+            <div class="chip">PHP / Laravel (7.x)</div>
             <div class="chip">MongoDB · MySQL</div>
-            <div class="chip">Chrome Extensions · AWS</div>
-            <div class="chip">Performance & Scaling</div>
+            <div class="chip">Python · AWS Textract</div>
+            <div class="chip">Chrome Extensions · Automation</div>
+            <div class="chip">Production debugging & scaling</div>
           </div>
 
           <div class="hero-actions">
@@ -844,22 +986,29 @@
             <div class="hero-short-item">
               <div class="hero-short-dot"></div>
               <div>
-                Designed & optimized Node.js + MongoDB APIs for HR/candidate management
-                with thousands of profiles.
+                Architected and optimized Node.js + MongoDB APIs for HR and candidate
+                management with thousands of profiles and heavy reporting.
               </div>
             </div>
             <div class="hero-short-item">
               <div class="hero-short-dot"></div>
               <div>
-                Built resume parsing & search pipelines using Python, Textract,
-                and vector-friendly data formats.
+                Built Python resume parsing service that converts messy PDFs/DOCs into
+                clean JSON, ready for keyword and vector search.
               </div>
             </div>
             <div class="hero-short-item">
               <div class="hero-short-dot"></div>
               <div>
-                Automated hiring workflows with Chrome extensions & scripts:
-                queues, re-queueing, and profile syncing.
+                Created Chrome extensions that sit on top of hiring portals to
+                re-queue candidates, sync profiles and remove repetitive clicks.
+              </div>
+            </div>
+            <div class="hero-short-item">
+              <div class="hero-short-dot"></div>
+              <div>
+                Hands-on with production issues: SMTP timeouts, slow Mongo queries,
+                Node/Mongo upgrades and Linux server debugging.
               </div>
             </div>
           </div>
@@ -870,23 +1019,30 @@
             <span>Snapshot</span>
             <span>Last updated · 2025</span>
           </div>
+
+          <div class="hero-badges">
+            <div class="hero-badge hero-badge-strong">Backend-first mindset</div>
+            <div class="hero-badge">HRTech & hiring workflows</div>
+            <div class="hero-badge">Hands-on with infra & logs</div>
+          </div>
+
           <div class="hero-right-grid">
             <div class="pill-card">
-              <strong>HR & Recruiting Tools</strong>
+              <strong>HR & Recruiting Platforms</strong>
               <div>
-                Full-stack platform for uploading, tracking & following up candidates
-                across multiple roles and recruiters.
+                Multi-role candidate pipelines, recruiter feedback, follow-ups and
+                organization-wide reports used daily by HR teams.
               </div>
               <div class="pill-meta">
-                <div class="pill-tag">Node.js + MongoDB</div>
+                <div class="pill-tag">Node.js · MongoDB</div>
                 <div class="pill-tag pill-tag-soft">Laravel frontend</div>
               </div>
             </div>
             <div class="pill-card">
-              <strong>Resume Parsing API</strong>
+              <strong>Resume Parsing Service</strong>
               <div>
-                Python-based microservice to parse resumes, sanitize data and
-                expose it via REST, ready for vector search.
+                Python microservice behind an API, normalizing resumes into
+                consistent, analyzable data for search and analytics.
               </div>
               <div class="pill-meta">
                 <div class="pill-tag">Python</div>
@@ -894,10 +1050,10 @@
               </div>
             </div>
             <div class="pill-card">
-              <strong>Chrome Automations</strong>
+              <strong>Browser Automations</strong>
               <div>
-                Extensions that read complex hiring UIs, re-queue candidates,
-                sync profiles and reduce manual clicks.
+                Chrome extensions for hiring sites that read complex HTML, detect
+                unprocessed profiles and trigger the right actions.
               </div>
               <div class="pill-meta">
                 <div class="pill-tag">Chrome API</div>
@@ -905,10 +1061,10 @@
               </div>
             </div>
             <div class="pill-card">
-              <strong>Infra & Scripting</strong>
+              <strong>Infra & Reliability</strong>
               <div>
-                Experience with Linux servers, SMTP, background jobs,
-                and upgrading Node/Mongo for better performance.
+                Debugging production – SMTP issues, long-running queries, Node/Mongo
+                version upgrades, log analysis and timeouts.
               </div>
               <div class="pill-meta">
                 <div class="pill-tag pill-tag-soft">Ubuntu · AWS</div>
@@ -923,60 +1079,60 @@
         <div class="section-label">FOCUS</div>
         <h2 class="section-title">What I like to build</h2>
         <p class="section-subtitle">
-          My best work comes when I’m automating painful manual workflows and turning
-          messy data into clean, searchable systems.
+          I work best on systems where backend, data and automation matter more than flashy UI:
+          internal tools, hiring platforms and APIs that have to stay fast and reliable.
         </p>
 
         <div class="cards-row">
           <article class="card">
             <div class="card-title">Backend-heavy web apps</div>
             <p>
-              APIs, dashboards and internal tools that teams actually use every day.
-              I care about data modeling, query performance and clean contracts.
+              Endpoints, dashboards and internal tools with clear contracts, error handling
+              and sane pagination – the kind of APIs other teams enjoy integrating with.
             </p>
             <div class="card-pill-row">
-              <div class="card-pill">REST APIs</div>
-              <div class="card-pill">Auth & roles</div>
-              <div class="card-pill">Pagination & reports</div>
+              <div class="card-pill">REST APIs & auth</div>
+              <div class="card-pill">Role-based access</div>
+              <div class="card-pill">Reporting endpoints</div>
             </div>
           </article>
 
           <article class="card">
             <div class="card-title">Hiring & HR platforms</div>
             <p>
-              Candidate upload, call/text logging, recruiter feedback,
-              status tracking and campaign-wise reporting.
+              Systems where recruiters upload candidates, update statuses, leave feedback
+              and get clear reports per client, campaign, recruiter and time period.
             </p>
             <div class="card-pill-row">
               <div class="card-pill">Candidate pipelines</div>
-              <div class="card-pill">Follow-ups</div>
-              <div class="card-pill">Org-level reports</div>
+              <div class="card-pill">Follow-up tracking</div>
+              <div class="card-pill">Org-level insights</div>
             </div>
           </article>
 
           <article class="card">
             <div class="card-title">Resume parsing & search</div>
             <p>
-              From raw PDF/DOC to structured JSON, mapped skills, experience & education –
-              ready for keyword and vector search.
+              Taking unstructured text from PDFs/DOCs, cleaning and mapping it to experiences,
+              skills and education – ready for keyword and vector-based search.
             </p>
             <div class="card-pill-row">
-              <div class="card-pill">Python</div>
+              <div class="card-pill">Python parsing</div>
               <div class="card-pill">Textract / OCR</div>
-              <div class="card-pill">Search pipelines</div>
+              <div class="card-pill">Search schemas</div>
             </div>
           </article>
 
           <article class="card">
             <div class="card-title">Browser extensions & automation</div>
             <p>
-              Small tools that sit on top of other websites and do repetitive work
-              (clicking, filling, syncing) so humans don’t have to.
+              Scripted actions on top of existing websites so teams stop clicking the same
+              buttons 500 times a day and can focus on real decisions.
             </p>
             <div class="card-pill-row">
               <div class="card-pill">Chrome extensions</div>
               <div class="card-pill">DOM automation</div>
-              <div class="card-pill">Background scripts</div>
+              <div class="card-pill">Background jobs</div>
             </div>
           </article>
         </div>
@@ -987,8 +1143,8 @@
         <div class="section-label">PROJECTS</div>
         <h2 class="section-title">Selected work</h2>
         <p class="section-subtitle">
-          A few concrete projects (some internal, some customer-facing).
-          Demo links are placeholders – swap them with your actual URLs.
+          A few representative projects. Some are internal or client-owned, so I link to
+          descriptions instead of full code where needed.
         </p>
 
         <div class="projects-grid">
@@ -998,17 +1154,16 @@
               <div class="project-tag">Production</div>
             </div>
             <p>
-              Full workflow for HR teams: upload candidates, manage multiple roles,
-              track feedback, status, and follow-ups from a web dashboard.
-              Includes powerful reporting by client, campaign, recruiter and date.
+              End-to-end workflow for HR teams: upload candidates, assign to multiple roles,
+              record calls and feedback, and track status from first contact to joining.
+              Includes complex reporting over thousands of records.
             </p>
             <div class="project-meta">
-              <span>Stack: Node.js, MongoDB, Laravel</span>
-              <span>• Optimized aggregation queries & indexing</span>
+              <span>Stack: Node.js, Express, MongoDB, Laravel</span>
+              <span>• Tuned aggregation pipelines & indexes to avoid timeouts</span>
             </div>
-            <!-- Replace href with your real link -->
             <a class="project-link" href="#" target="_blank" rel="noreferrer">
-              <span>View demo / notes</span> →
+              <span>Architecture / notes (placeholder)</span> →
             </a>
           </article>
 
@@ -1018,16 +1173,16 @@
               <div class="project-tag">Backend</div>
             </div>
             <p>
-              Python microservice that parses resumes into clean JSON.
-              Handles different formats, extracts skills, roles, timelines and structures
-              them for search and analytics. Built as a standalone API used by other apps.
+              Python microservice that accepts resume URLs or files, parses them via
+              AWS Textract/other methods and normalizes the results into a stable JSON
+              structure used by search, analytics and vector indexing.
             </p>
             <div class="project-meta">
               <span>Stack: Python, boto3, AWS Textract</span>
-              <span>• Designed vector-friendly schema</span>
+              <span>• Designed schema for flexible filters & embeddings</span>
             </div>
             <a class="project-link" href="#" target="_blank" rel="noreferrer">
-              <span>API docs / repo</span> →
+              <span>API docs / repo (placeholder)</span> →
             </a>
           </article>
 
@@ -1037,16 +1192,16 @@
               <div class="project-tag">Automation</div>
             </div>
             <p>
-              Chrome extension for a hiring portal that reads page content,
-              identifies unprocessed profiles, and automatically re-queues
-              or syncs them to another system with one click.
+              Chrome extension that reads complex hiring UIs, identifies unprocessed rows,
+              automatically clicks “Re-queue” and syncs selected profiles with an internal
+              system – reducing manual work and avoiding missed candidates.
             </p>
             <div class="project-meta">
-              <span>Stack: Chrome Extension API, JS</span>
-              <span>• Reduced manual clicking & errors</span>
+              <span>Stack: JavaScript, Chrome Extension APIs</span>
+              <span>• Handles multi-page flows & content script messaging</span>
             </div>
             <a class="project-link" href="#" target="_blank" rel="noreferrer">
-              <span>Demo video</span> →
+              <span>Demo video / screenshots (placeholder)</span> →
             </a>
           </article>
 
@@ -1056,16 +1211,16 @@
               <div class="project-tag">Ops</div>
             </div>
             <p>
-              Utility scripts and fixes around SMTP, cron jobs, Linux servers,
-              and upgrading Node/Mongo to improve performance and reliability
-              in production environments.
+              Collection of scripts and configuration for Ubuntu servers, background jobs
+              and SMTP. Includes debugging of Gmail SMTP timeouts, log-based monitoring and
+              refactoring long-running processes into safer flows.
             </p>
             <div class="project-meta">
               <span>Stack: Python, Bash, Ubuntu, AWS</span>
-              <span>• Focus on stability & observability</span>
+              <span>• Focus on observability, alerts and safe restarts</span>
             </div>
             <a class="project-link" href="#" target="_blank" rel="noreferrer">
-              <span>Configuration notes</span> →
+              <span>Ops notes (placeholder)</span> →
             </a>
           </article>
         </div>
@@ -1076,8 +1231,8 @@
         <div class="section-label">STACK</div>
         <h2 class="section-title">Skills & tools</h2>
         <p class="section-subtitle">
-          I’m strongest on the backend, but I understand enough frontend & infra
-          to ship features end-to-end and keep them running.
+          My core strength is backend and data, but I understand enough frontend and DevOps
+          to ship and run complete features by myself.
         </p>
 
         <div class="skills-layout">
@@ -1087,9 +1242,10 @@
               <div class="skill-chips">
                 <span class="skill-chip">Node.js</span>
                 <span class="skill-chip">Express</span>
-                <span class="skill-chip">PHP 7.1</span>
+                <span class="skill-chip">PHP 7.x</span>
                 <span class="skill-chip">Laravel</span>
-                <span class="skill-chip">REST APIs</span>
+                <span class="skill-chip">REST API design</span>
+                <span class="skill-chip">Background jobs</span>
               </div>
             </div>
 
@@ -1097,7 +1253,8 @@
               <div class="skill-group-title">Data & Storage</div>
               <div class="skill-chips">
                 <span class="skill-chip">MongoDB</span>
-                <span class="skill-chip">Aggregation + Indexing</span>
+                <span class="skill-chip">Aggregation pipelines</span>
+                <span class="skill-chip">Indexing & performance</span>
                 <span class="skill-chip">MySQL</span>
                 <span class="skill-chip">Schema design</span>
               </div>
@@ -1107,10 +1264,10 @@
               <div class="skill-group-title">Automation & Parsing</div>
               <div class="skill-chips">
                 <span class="skill-chip">Python</span>
-                <span class="skill-chip">boto3</span>
-                <span class="skill-chip">AWS Textract</span>
-                <span class="skill-chip">Chrome Extensions</span>
-                <span class="skill-chip">Scripting</span>
+                <span class="skill-chip">AWS Textract / OCR</span>
+                <span class="skill-chip">Resume parsing</span>
+                <span class="skill-chip">Chrome extensions</span>
+                <span class="skill-chip">Scripting & CLIs</span>
               </div>
             </div>
 
@@ -1119,29 +1276,30 @@
               <div class="skill-chips">
                 <span class="skill-chip">Blade / Laravel</span>
                 <span class="skill-chip">HTML & CSS</span>
-                <span class="skill-chip">jQuery / JS</span>
+                <span class="skill-chip">JavaScript / jQuery</span>
               </div>
             </div>
 
             <div class="skill-group">
-              <div class="skill-group-title">DevOps & Tools</div>
+              <div class="skill-group-title">DevOps & Tooling</div>
               <div class="skill-chips">
                 <span class="skill-chip">Linux / Ubuntu</span>
-                <span class="skill-chip">AWS</span>
+                <span class="skill-chip">AWS basics</span>
+                <span class="skill-chip">Nginx / Apache</span>
                 <span class="skill-chip">Git & Bitbucket</span>
-                <span class="skill-chip">SSH / Nginx</span>
+                <span class="skill-chip">SSH & server setup</span>
               </div>
             </div>
           </div>
 
           <div class="vertical-card">
-            <strong>How I approach work</strong>
+            <strong>How I approach engineering</strong>
             <ul style="margin: 8px 0 0 16px; padding: 0;">
-              <li>Understand the real workflow and pain points first.</li>
-              <li>Design data models & APIs that are easy to extend.</li>
-              <li>Watch performance – logs, timeouts, slow queries.</li>
-              <li>Automate repetitive tasks where it makes sense.</li>
-              <li>Keep notes & scripts so the system is maintainable.</li>
+              <li>Start from the real workflow – what HR / recruiters actually do daily.</li>
+              <li>Model data and APIs to keep changes cheap and predictable.</li>
+              <li>Watch logs and metrics; fix the root cause, not just symptoms.</li>
+              <li>Automate repetitive flows when it clearly saves human time.</li>
+              <li>Leave notes, scripts and small docs so systems stay maintainable.</li>
             </ul>
           </div>
         </div>
@@ -1152,8 +1310,8 @@
         <div class="section-label">PATH</div>
         <h2 class="section-title">Timeline</h2>
         <p class="section-subtitle">
-          A quick look at how my work has evolved – from HR tools and resume parsing
-          to more automation and performance-focused projects.
+          How my work has evolved over time – from basic web development to
+          owning more of the backend, data and reliability.
         </p>
 
         <div class="timeline">
@@ -1162,11 +1320,12 @@
             <div>
               <div class="timeline-role">Scaling candidate reporting & follow-ups</div>
               <div class="timeline-meta">
-                Optimized MongoDB aggregations, added pagination & indexing, and improved
-                page load times for large candidate datasets.
+                Focused on MongoDB aggregations, indexing and pagination to keep
+                reporting fast as candidate volume grew. Debugged production
+                timeouts and memory issues.
               </div>
               <div class="timeline-highlight">
-                → Focus on reliability & performance in production.
+                → Stronger focus on performance and “day-2” reliability.
               </div>
             </div>
           </div>
@@ -1176,11 +1335,12 @@
             <div>
               <div class="timeline-role">Resume parsing & search pipeline</div>
               <div class="timeline-meta">
-                Built a Python API for parsing resumes, mapping structured data,
-                and preparing it for keyword & vector search.
+                Designed and implemented a Python-based resume parsing API,
+                worked on data cleaning, mapping experience and skills into
+                structured fields and making it ready for vector search.
               </div>
               <div class="timeline-highlight">
-                → Stronger understanding of text data cleaning & structuring.
+                → Learned to treat text as data, not just strings.
               </div>
             </div>
           </div>
@@ -1188,13 +1348,14 @@
           <div class="timeline-item">
             <div class="timeline-time">2023</div>
             <div>
-              <div class="timeline-role">HR Platform & Chrome extensions</div>
+              <div class="timeline-role">HR platform & Chrome extensions</div>
               <div class="timeline-meta">
-                Shipped a web platform for recruiters plus extensions to integrate with
-                external hiring portals and automate repetitive actions.
+                Combined a web platform with browser extensions to glue together
+                external hiring portals and internal systems, reducing manual steps
+                for recruiters.
               </div>
               <div class="timeline-highlight">
-                → Learned to glue multiple systems together with code.
+                → Discovered how small automations can save hours of manual work.
               </div>
             </div>
           </div>
@@ -1202,13 +1363,14 @@
           <div class="timeline-item">
             <div class="timeline-time">Earlier</div>
             <div>
-              <div class="timeline-role">Web dev & scripting foundations</div>
+              <div class="timeline-role">Web dev foundations & infra</div>
               <div class="timeline-meta">
-                Worked with PHP/Laravel, basic web hosting, Linux, SMTP,
-                and scripting – the pieces that now support my current work.
+                Worked with PHP/Laravel, Node.js, Linux servers, SMTP, SSH and basic
+                hosting – building the practical experience I now rely on for
+                debugging and deployments.
               </div>
               <div class="timeline-highlight">
-                → Solid base in “real-world” debugging and deployment.
+                → Built a “full picture” mental model from code to production.
               </div>
             </div>
           </div>
@@ -1221,8 +1383,8 @@
           <div>
             <div class="contact-highlight">Let’s build something useful.</div>
             <p class="contact-text">
-              If you’re working on HR tech, automation, or systems that involve
-              lots of data and repetitive workflows, I’d love to help.
+              If you’re working on HR tech, automation, or any backend-heavy system that
+              touches a lot of data and repetitive workflows, I’d be happy to talk.
             </p>
 
             <div class="contact-links">
@@ -1273,17 +1435,13 @@
       </section>
 
       <footer>
-        © <span id="year"></span> Aditya · Built with HTML & CSS · Deployed as a static site
+        © <span id="year"></span> Aditya Dubey · Built with HTML & CSS · Deployed as a static site
       </footer>
     </main>
   </div>
 
   <script>
-    // Small JS to auto-set the year and fake a status message if you enable the form later
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // If in future you want to handle form submit via JS, you can hook here.
-    // For now, the form is disabled and status text is unused.
   </script>
 </body>
 </html>
