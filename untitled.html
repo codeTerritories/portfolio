@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aditya – Backend & Automation Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Portfolio of Aditya – Backend & Automation Engineer specializing in Node.js, PHP/Laravel, MongoDB, HR tools, resume parsing, and Chrome extensions."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --accent-strong: rgba(56, 189, 248, 0.3);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --radius-xl: 18px;
+      --radius-2xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+      --shadow-glow: 0 0 40px rgba(56, 189, 248, 0.3);
+      --nav-blur: blur(18px);
+      --transition-fast: 0.18s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1220 0, #020617 40%, #020617 100%);
+      color: var(--text-main);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 16px 72px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: var(--nav-blur);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.95),
+        rgba(2, 6, 23, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(30, 64, 175, 0.6);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 16px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at 30% 0%, #38bdf8, #1e3a8a);
+      box-shadow: var(--shadow-glow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-logo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.2), transparent);
+      mix-blend-mode: screen;
+    }
+
+    .brand-text-main {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      transition: border-color var(--transition-fast), color var(--transition-fast),
+        background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+      border-color: rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.85);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      border-color: rgba(56, 189, 248, 0.7);
+      background: radial-gradient(circle at top left, #0ea5e9, #1d4ed8);
+      color: white;
+      font-weight: 500;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .nav-cta:hover {
+      background: radial-gradient(circle at top left, #38bdf8, #1d4ed8);
+    }
+
+    main {
+      margin-top: 18px;
+    }
+
+    section {
+      margin-top: 40px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--accent));
+    }
+
+    .section-title {
+      margin: 10px 0 4px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (max-width: 840px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-left {
+      padding: 18px 18px 20px;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent),
+        var(--card-bg);
+      border-radius: var(--radius-2xl);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      font-size: 11px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .hero-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 3.3vw, 32px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0 0 6px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #e5e7eb, #38bdf8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    .hero-stats {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: none;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      background: radial-gradient(circle at top left, #0ea5e9, #1d4ed8);
+      color: white;
+      box-shadow: var(--shadow-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top left, #38bdf8, #1d4ed8);
+    }
+
+    .btn-secondary {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 1);
+      transform: translateY(-1px);
+    }
+
+    .hero-short-list {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(75, 85, 99, 0.7);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .hero-short-item {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .hero-short-dot {
+      margin-top: 3px;
+      width: 4px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.9);
+    }
+
+    .hero-right {
+      border-radius: var(--radius-2xl);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 14px 14px 16px;
+      background: radial-gradient(circle at top right, rgba(56, 189, 248, 0.18), transparent),
+        linear-gradient(135deg, #020617, #020617 45%, #0b1220);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-right-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .pill-card {
+      border-radius: var(--radius-xl);
+      padding: 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      font-size: 11px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pill-card strong {
+      font-size: 12px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .pill-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .pill-tag {
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(30, 64, 175, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      font-size: 10px;
+      color: #e5e7eb;
+    }
+
+    .pill-tag-soft {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+    }
+
+    /* Section: What I Build */
+
+    .cards-row {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      padding: 14px 14px 16px;
+      background: var(--card-bg);
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .card-pill-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .card-pill {
+      font-size: 11px;
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .project {
+      position: relative;
+      padding: 14px 14px 16px;
+      border-radius: var(--radius-2xl);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent),
+        rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+      overflow: hidden;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .project-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .project-tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.6);
+      color: var(--accent);
+    }
+
+    .project p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .project-meta {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .project-link {
+      margin-top: 10px;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    .project-link span {
+      text-decoration: underline;
+    }
+
+    /* Skills */
+
+    .skills-layout {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 840px) {
+      .skills-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+    }
+
+    .skill-group {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 12px 12px;
+      font-size: 12px;
+    }
+
+    .skill-group-title {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-chip {
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+    }
+
+    .vertical-card {
+      border-radius: var(--radius-2xl);
+      padding: 14px 14px 16px;
+      background: var(--card-bg);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .vertical-card strong {
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    /* Timeline */
+
+    .timeline {
+      margin-top: 18px;
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border-subtle);
+      background: var(--card-bg);
+      padding: 14px 14px 16px;
+      font-size: 12px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 105px minmax(0, 1fr);
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(55, 65, 81, 0.6);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-time {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .timeline-role {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .timeline-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .timeline-highlight {
+      font-size: 11px;
+      margin-top: 4px;
+      color: var(--accent);
+    }
+
+    /* Contact */
+
+    .contact-section {
+      margin-top: 28px;
+      border-radius: var(--radius-2xl);
+      padding: 16px 14px 18px;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent),
+        var(--card-bg);
+      border: 1px solid rgba(56, 189, 248, 0.7);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    @media (max-width: 720px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-highlight {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .contact-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .contact-links {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .contact-link {
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.95);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-main);
+    }
+
+    .contact-link span {
+      text-decoration: underline;
+    }
+
+    form {
+      display: grid;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    label {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 12px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.6);
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .form-row-inline {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    @media (max-width: 480px) {
+      .form-row-inline {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .form-info {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .btn-send {
+      justify-content: center;
+      width: fit-content;
+      margin-top: 4px;
+    }
+
+    .contact-status {
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--accent);
+      min-height: 14px;
+    }
+
+    footer {
+      margin-top: 28px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Small helper for the fake form */
+    .fake-disabled {
+      opacity: 0.8;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <div>
+          <div class="brand-text-main">Aditya</div>
+          <div class="brand-text-sub">Backend & Automation Engineer</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#contact" class="nav-cta">Let’s talk</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <main>
+      <!-- HERO -->
+      <section id="top" class="hero">
+        <div class="hero-left">
+          <div class="hero-pill">
+            <span class="hero-pill-dot"></span>
+            Available for remote / hybrid work
+          </div>
+          <h1 class="hero-title">
+            I build <span>backends, automations & hiring tools</span>.
+          </h1>
+          <p class="hero-tagline">
+            Backend-heavy engineer from India, focused on real-world systems –
+            HR platforms, resume parsing APIs, Chrome extensions, and automation scripts
+            that save teams hours every week.
+          </p>
+
+          <div class="hero-stats">
+            <div class="chip">Node.js · PHP / Laravel · Python</div>
+            <div class="chip">MongoDB · MySQL</div>
+            <div class="chip">Chrome Extensions · AWS</div>
+            <div class="chip">Performance & Scaling</div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              👋 Work with me
+            </button>
+            <a href="#work">
+              <button class="btn-secondary">
+                View selected work ↓
+              </button>
+            </a>
+          </div>
+
+          <div class="hero-short-list">
+            <div class="hero-short-item">
+              <div class="hero-short-dot"></div>
+              <div>
+                Designed & optimized Node.js + MongoDB APIs for HR/candidate management
+                with thousands of profiles.
+              </div>
+            </div>
+            <div class="hero-short-item">
+              <div class="hero-short-dot"></div>
+              <div>
+                Built resume parsing & search pipelines using Python, Textract,
+                and vector-friendly data formats.
+              </div>
+            </div>
+            <div class="hero-short-item">
+              <div class="hero-short-dot"></div>
+              <div>
+                Automated hiring workflows with Chrome extensions & scripts:
+                queues, re-queueing, and profile syncing.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-right">
+          <div class="hero-right-title">
+            <span>Snapshot</span>
+            <span>Last updated · 2025</span>
+          </div>
+          <div class="hero-right-grid">
+            <div class="pill-card">
+              <strong>HR & Recruiting Tools</strong>
+              <div>
+                Full-stack platform for uploading, tracking & following up candidates
+                across multiple roles and recruiters.
+              </div>
+              <div class="pill-meta">
+                <div class="pill-tag">Node.js + MongoDB</div>
+                <div class="pill-tag pill-tag-soft">Laravel frontend</div>
+              </div>
+            </div>
+            <div class="pill-card">
+              <strong>Resume Parsing API</strong>
+              <div>
+                Python-based microservice to parse resumes, sanitize data and
+                expose it via REST, ready for vector search.
+              </div>
+              <div class="pill-meta">
+                <div class="pill-tag">Python</div>
+                <div class="pill-tag pill-tag-soft">AWS Textract</div>
+              </div>
+            </div>
+            <div class="pill-card">
+              <strong>Chrome Automations</strong>
+              <div>
+                Extensions that read complex hiring UIs, re-queue candidates,
+                sync profiles and reduce manual clicks.
+              </div>
+              <div class="pill-meta">
+                <div class="pill-tag">Chrome API</div>
+                <div class="pill-tag pill-tag-soft">Content scripts</div>
+              </div>
+            </div>
+            <div class="pill-card">
+              <strong>Infra & Scripting</strong>
+              <div>
+                Experience with Linux servers, SMTP, background jobs,
+                and upgrading Node/Mongo for better performance.
+              </div>
+              <div class="pill-meta">
+                <div class="pill-tag pill-tag-soft">Ubuntu · AWS</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WHAT I BUILD -->
+      <section id="work">
+        <div class="section-label">FOCUS</div>
+        <h2 class="section-title">What I like to build</h2>
+        <p class="section-subtitle">
+          My best work comes when I’m automating painful manual workflows and turning
+          messy data into clean, searchable systems.
+        </p>
+
+        <div class="cards-row">
+          <article class="card">
+            <div class="card-title">Backend-heavy web apps</div>
+            <p>
+              APIs, dashboards and internal tools that teams actually use every day.
+              I care about data modeling, query performance and clean contracts.
+            </p>
+            <div class="card-pill-row">
+              <div class="card-pill">REST APIs</div>
+              <div class="card-pill">Auth & roles</div>
+              <div class="card-pill">Pagination & reports</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-title">Hiring & HR platforms</div>
+            <p>
+              Candidate upload, call/text logging, recruiter feedback,
+              status tracking and campaign-wise reporting.
+            </p>
+            <div class="card-pill-row">
+              <div class="card-pill">Candidate pipelines</div>
+              <div class="card-pill">Follow-ups</div>
+              <div class="card-pill">Org-level reports</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-title">Resume parsing & search</div>
+            <p>
+              From raw PDF/DOC to structured JSON, mapped skills, experience & education –
+              ready for keyword and vector search.
+            </p>
+            <div class="card-pill-row">
+              <div class="card-pill">Python</div>
+              <div class="card-pill">Textract / OCR</div>
+              <div class="card-pill">Search pipelines</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-title">Browser extensions & automation</div>
+            <p>
+              Small tools that sit on top of other websites and do repetitive work
+              (clicking, filling, syncing) so humans don’t have to.
+            </p>
+            <div class="card-pill-row">
+              <div class="card-pill">Chrome extensions</div>
+              <div class="card-pill">DOM automation</div>
+              <div class="card-pill">Background scripts</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section aria-label="Selected Projects">
+        <div class="section-label">PROJECTS</div>
+        <h2 class="section-title">Selected work</h2>
+        <p class="section-subtitle">
+          A few concrete projects (some internal, some customer-facing).
+          Demo links are placeholders – swap them with your actual URLs.
+        </p>
+
+        <div class="projects-grid">
+          <article class="project">
+            <div class="project-header">
+              <div class="project-title">Candidate Follow-up Suite</div>
+              <div class="project-tag">Production</div>
+            </div>
+            <p>
+              Full workflow for HR teams: upload candidates, manage multiple roles,
+              track feedback, status, and follow-ups from a web dashboard.
+              Includes powerful reporting by client, campaign, recruiter and date.
+            </p>
+            <div class="project-meta">
+              <span>Stack: Node.js, MongoDB, Laravel</span>
+              <span>• Optimized aggregation queries & indexing</span>
+            </div>
+            <!-- Replace href with your real link -->
+            <a class="project-link" href="#" target="_blank" rel="noreferrer">
+              <span>View demo / notes</span> →
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="project-header">
+              <div class="project-title">Resume Parsing API</div>
+              <div class="project-tag">Backend</div>
+            </div>
+            <p>
+              Python microservice that parses resumes into clean JSON.
+              Handles different formats, extracts skills, roles, timelines and structures
+              them for search and analytics. Built as a standalone API used by other apps.
+            </p>
+            <div class="project-meta">
+              <span>Stack: Python, boto3, AWS Textract</span>
+              <span>• Designed vector-friendly schema</span>
+            </div>
+            <a class="project-link" href="#" target="_blank" rel="noreferrer">
+              <span>API docs / repo</span> →
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="project-header">
+              <div class="project-title">Hiring Portal Chrome Extension</div>
+              <div class="project-tag">Automation</div>
+            </div>
+            <p>
+              Chrome extension for a hiring portal that reads page content,
+              identifies unprocessed profiles, and automatically re-queues
+              or syncs them to another system with one click.
+            </p>
+            <div class="project-meta">
+              <span>Stack: Chrome Extension API, JS</span>
+              <span>• Reduced manual clicking & errors</span>
+            </div>
+            <a class="project-link" href="#" target="_blank" rel="noreferrer">
+              <span>Demo video</span> →
+            </a>
+          </article>
+
+          <article class="project">
+            <div class="project-header">
+              <div class="project-title">Infra & Email Automation Scripts</div>
+              <div class="project-tag">Ops</div>
+            </div>
+            <p>
+              Utility scripts and fixes around SMTP, cron jobs, Linux servers,
+              and upgrading Node/Mongo to improve performance and reliability
+              in production environments.
+            </p>
+            <div class="project-meta">
+              <span>Stack: Python, Bash, Ubuntu, AWS</span>
+              <span>• Focus on stability & observability</span>
+            </div>
+            <a class="project-link" href="#" target="_blank" rel="noreferrer">
+              <span>Configuration notes</span> →
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="section-label">STACK</div>
+        <h2 class="section-title">Skills & tools</h2>
+        <p class="section-subtitle">
+          I’m strongest on the backend, but I understand enough frontend & infra
+          to ship features end-to-end and keep them running.
+        </p>
+
+        <div class="skills-layout">
+          <div class="skills-grid">
+            <div class="skill-group">
+              <div class="skill-group-title">Backend</div>
+              <div class="skill-chips">
+                <span class="skill-chip">Node.js</span>
+                <span class="skill-chip">Express</span>
+                <span class="skill-chip">PHP 7.1</span>
+                <span class="skill-chip">Laravel</span>
+                <span class="skill-chip">REST APIs</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-group-title">Data & Storage</div>
+              <div class="skill-chips">
+                <span class="skill-chip">MongoDB</span>
+                <span class="skill-chip">Aggregation + Indexing</span>
+                <span class="skill-chip">MySQL</span>
+                <span class="skill-chip">Schema design</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-group-title">Automation & Parsing</div>
+              <div class="skill-chips">
+                <span class="skill-chip">Python</span>
+                <span class="skill-chip">boto3</span>
+                <span class="skill-chip">AWS Textract</span>
+                <span class="skill-chip">Chrome Extensions</span>
+                <span class="skill-chip">Scripting</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-group-title">Frontend & UX</div>
+              <div class="skill-chips">
+                <span class="skill-chip">Blade / Laravel</span>
+                <span class="skill-chip">HTML & CSS</span>
+                <span class="skill-chip">jQuery / JS</span>
+              </div>
+            </div>
+
+            <div class="skill-group">
+              <div class="skill-group-title">DevOps & Tools</div>
+              <div class="skill-chips">
+                <span class="skill-chip">Linux / Ubuntu</span>
+                <span class="skill-chip">AWS</span>
+                <span class="skill-chip">Git & Bitbucket</span>
+                <span class="skill-chip">SSH / Nginx</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="vertical-card">
+            <strong>How I approach work</strong>
+            <ul style="margin: 8px 0 0 16px; padding: 0;">
+              <li>Understand the real workflow and pain points first.</li>
+              <li>Design data models & APIs that are easy to extend.</li>
+              <li>Watch performance – logs, timeouts, slow queries.</li>
+              <li>Automate repetitive tasks where it makes sense.</li>
+              <li>Keep notes & scripts so the system is maintainable.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section id="timeline">
+        <div class="section-label">PATH</div>
+        <h2 class="section-title">Timeline</h2>
+        <p class="section-subtitle">
+          A quick look at how my work has evolved – from HR tools and resume parsing
+          to more automation and performance-focused projects.
+        </p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-time">2025</div>
+            <div>
+              <div class="timeline-role">Scaling candidate reporting & follow-ups</div>
+              <div class="timeline-meta">
+                Optimized MongoDB aggregations, added pagination & indexing, and improved
+                page load times for large candidate datasets.
+              </div>
+              <div class="timeline-highlight">
+                → Focus on reliability & performance in production.
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-time">2024</div>
+            <div>
+              <div class="timeline-role">Resume parsing & search pipeline</div>
+              <div class="timeline-meta">
+                Built a Python API for parsing resumes, mapping structured data,
+                and preparing it for keyword & vector search.
+              </div>
+              <div class="timeline-highlight">
+                → Stronger understanding of text data cleaning & structuring.
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-time">2023</div>
+            <div>
+              <div class="timeline-role">HR Platform & Chrome extensions</div>
+              <div class="timeline-meta">
+                Shipped a web platform for recruiters plus extensions to integrate with
+                external hiring portals and automate repetitive actions.
+              </div>
+              <div class="timeline-highlight">
+                → Learned to glue multiple systems together with code.
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-time">Earlier</div>
+            <div>
+              <div class="timeline-role">Web dev & scripting foundations</div>
+              <div class="timeline-meta">
+                Worked with PHP/Laravel, basic web hosting, Linux, SMTP,
+                and scripting – the pieces that now support my current work.
+              </div>
+              <div class="timeline-highlight">
+                → Solid base in “real-world” debugging and deployment.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="contact-section">
+        <div class="contact-grid">
+          <div>
+            <div class="contact-highlight">Let’s build something useful.</div>
+            <p class="contact-text">
+              If you’re working on HR tech, automation, or systems that involve
+              lots of data and repetitive workflows, I’d love to help.
+            </p>
+
+            <div class="contact-links">
+              <!-- Replace these with your real links -->
+              <a class="contact-link" href="mailto:youremail@example.com">
+                ✉️ <span>youremail@example.com</span>
+              </a>
+              <a class="contact-link" href="https://github.com/your-github" target="_blank" rel="noreferrer">
+                💻 <span>GitHub</span>
+              </a>
+              <a class="contact-link" href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noreferrer">
+                🔗 <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <form id="contact-form">
+              <div class="form-row-inline">
+                <div>
+                  <label for="name">Name</label>
+                  <input id="name" type="text" placeholder="Your name" disabled class="fake-disabled" />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" type="email" placeholder="you@example.com" disabled class="fake-disabled" />
+                </div>
+              </div>
+              <div>
+                <label for="message">Project / message</label>
+                <textarea
+                  id="message"
+                  placeholder="Briefly describe what you’re building or what you need help with."
+                  disabled
+                  class="fake-disabled"
+                ></textarea>
+              </div>
+              <button type="button" class="btn-primary btn-send fake-disabled">
+                Send via email (coming soon)
+              </button>
+              <div class="form-info">
+                Form is intentionally disabled – reach out directly via email or LinkedIn links above.
+              </div>
+              <div id="contact-status" class="contact-status"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Aditya · Built with HTML & CSS · Deployed as a static site
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Small JS to auto-set the year and fake a status message if you enable the form later
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // If in future you want to handle form submit via JS, you can hook here.
+    // For now, the form is disabled and status text is unused.
+  </script>
+</body>
+</html>
